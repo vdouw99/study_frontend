@@ -1,1 +1,1 @@
-# study_frontend
+# 补补前端基础知识
