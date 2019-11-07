@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <title>Title</title>
+  <meta name="keywords" content=""/>
+  <meta name="description" content=""/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<details>
+  <summary>HTML 5</summary>
+  This document teaches you everything you have to learn about HTML 5.
+</details>
+
+<mark>标记内容</mark>
+
+<p><bdo dir="rtl">倒序</bdo></p>
+<bdo dir="rtl">倒序嵌套1
+  <bdi>倒序嵌套2</bdi>
+  <bdi>倒序嵌套3</bdi>
+</bdo>
+
+<p><sub>下标文本</sub><span>正常文字</span><sup>上标文本</sup></p>
+
+<article>article标记一篇文章</article>
+<header>header一个区域的头部</header>
+<nav>nav一个导航链接</nav>
+<section><span>section一块区域</span>
+  <hgroup>hgroup定义section中的相关信息</hgroup>
+</section>
+<aside>aside页面的内容部分的侧边栏，如菜单栏</aside>
+<figure><span>figure定义一组包裹多媒体内容以及他们的标题</span>
+  <figcaption>figcaption:figure元素的标题</figcaption>
+</figure>
+
+<footer>footer标记一个区域的底部</footer>
+<dialog>dialog定义一个对话框</dialog>
+
+<meter value="70" min="0" max="100" low="60" high="80" optimum="75"></meter>
+
+<progress value="13" max="100">您的浏览器不支持progress元素</progress>
+<style>
+  progress {
+    background: orange;
+    border: 1px solid #000;
+    width: 300px;
+    height: 16px;
+    -webkit-appearance: none;
+  }
+</style>
+
+<p>为input标定义一个下拉列表，配合option使用</p>
+<input placeholder="请选择学习的语言" list="langage"/>
+<datalist id="langage">
+  <option value="c++">c++</option>
+  <option value="c#">c#</option>
+  <option value="java">java</option>
+  <option value="javascript">javascript</option>
+</datalist>
+
+<form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
+  <input type="range" id="a" value="50">100
+  +<input type="number" id="b" value="50">
+  =
+  <output name="x" for="a b"></output>
+</form>
+
+<menu>menu表示用户界面菜单</menu>
+
+<small>small小字体，例如打印注释或者法律条款</small>
+
+</body>
+</html>
