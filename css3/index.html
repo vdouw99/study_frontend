@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <title>Title</title>
+  <meta name="keywords" content=""/>
+  <meta name="description" content=""/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <script src="../static/jquery.min.js"></script>
+</head>
+<body>
+<style>
+  .div {
+    width: 200px;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    background: #ccc;
+    margin-bottom: 20px;
+  }
+</style>
+
+<div class="div div1">rotate</div>
+<style>
+  .div1:hover {
+    transform: rotate(90deg);
+  }
+</style>
+
+<div class="div div2">translate</div>
+<style>
+  .div2:hover {
+    transform: translate(50px, 0);
+    transition: all 0.3s;
+  }
+</style>
+
+<div class="div div3">scale</div>
+<style>
+  .div3:hover {
+    transform: scale(0.8);
+    transform-origin: left top;
+    transition: transform 0.3s;
+  }
+</style>
+<p>transition:all的时候，动画过程中的原点还在中间，动画结束原点的设置才有效果。</p>
+
+<div class="div div4">skew</div>
+<style>
+  .div4:hover {
+    transform: skew(30deg, 20deg);
+    transition: all 0.3s;
+  }
+</style>
+
+<div class="div div5">matrix</div>
+<style>
+  .div5:hover {
+    transform: matrix(0.866, 0.5, -0.5, 0.866, 0, 0);
+    transition: all 0.3s;
+  }
+</style>
+
+<div class="div" id="resize" style="resize:both;overflow:hidden;">监听Resize，IE不兼容</div>
+<script>
+  resizeFunction('#resize');
+
+  function resizeFunction(target, callback) {
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
+    // 选择目标节点
+    var target = document.querySelector('#resize');
+    // 创建观察者对象
+    var observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        console.log(mutation);
+        console.log(target.style.width);
+        console.log(target.style.height);
+        callback && callback();
+      });
+    });
+    // 配置观察选项:
+    var config = {
+      attributes: true,//检测属性变动
+      childList: true,//检测子节点变动
+      characterData: true//节点内容或节点文本的变动。
+    }
+    // 传入目标节点和观察选项
+    observer.observe(target, config);
+    // /停止观察
+    //           observer.disconnect();
+  }
+
+
+</script>
+
+</body>
+</html>
