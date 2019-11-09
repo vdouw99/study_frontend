@@ -63,21 +63,22 @@
   }
 </style>
 
-<div class="div" id="resize" style="resize:both;overflow:hidden;">监听Resize，IE不兼容</div>
+<div class="div" id="resize" style="resize:both;overflow:hidden;position:relative;">监听Resize，IE不兼容</div>
 <script>
-  resizeFunction('#resize');
+  resizeFunction('#resize', function (target) {
+    console.log(target.style.width);
+    console.log(target.style.height);
+    target.style.lineHeight = target.style.height;
+  });
 
-  function resizeFunction(target, callback) {
+  function resizeFunction(el, callback) {
     var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
-    // 选择目标节点
-    var target = document.querySelector('#resize');
+    var target = document.querySelector(el);
     // 创建观察者对象
     var observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
         console.log(mutation);
-        console.log(target.style.width);
-        console.log(target.style.height);
-        callback && callback();
+        callback && callback(target);
       });
     });
     // 配置观察选项:
@@ -85,7 +86,7 @@
       attributes: true,//检测属性变动
       childList: true,//检测子节点变动
       characterData: true//节点内容或节点文本的变动。
-    }
+    };
     // 传入目标节点和观察选项
     observer.observe(target, config);
     // /停止观察
